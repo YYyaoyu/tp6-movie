@@ -21,8 +21,40 @@ class FilmInfo extends BaseController
        
     }
 
+    public function getType(){
+        $type = array(
+            'id'=>1,
+            'name'=>'dsdf'
+        );
+        return $type;
+    }
     public function search(){
-        return json(array('count'=>sizeof($this->result),'datalist'=>$this->result));
+        $type = [
+            [
+                'id'=>1,
+                'name'=>'剧情'
+            ],
+            [
+                'id'=>2,
+                'name'=>'喜剧'
+            ],
+            [
+                'id'=>3,
+                'name'=>'动画'
+            ],
+
+        ];
+        $result = $this->result;
+        foreach ($result as $value1) {
+            $catid = $value1->catid;
+            foreach ($type as $value2) {
+                $typeid = $value2['id'];
+                if($catid==$typeid){
+                    $value1->cat=$value2['name'];
+                }
+            }
+        }
+        return json(array('count'=>sizeof($this->result),'datalist'=>$result));
     }
 
    

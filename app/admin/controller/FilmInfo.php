@@ -22,28 +22,25 @@ class FilmInfo extends BaseController
     }
 
     public function getType(){
-        $type = array(
-            'id'=>1,
-            'name'=>'dsdf'
-        );
-        return $type;
-    }
-    public function search(){
         $type = [
             [
-                'id'=>1,
+                'id'=>'1',
                 'name'=>'剧情'
             ],
             [
-                'id'=>2,
+                'id'=>'2',
                 'name'=>'喜剧'
             ],
             [
-                'id'=>3,
+                'id'=>'3',
                 'name'=>'动画'
             ],
 
         ];
+        return $type;
+    }
+    public function search(){
+        $type = $this->getType();
         $result = $this->result;
         foreach ($result as $value1) {
             $catid = $value1->catid;
@@ -56,7 +53,6 @@ class FilmInfo extends BaseController
         }
         return json(array('count'=>sizeof($this->result),'datalist'=>$result));
     }
-
    
     public function edit()
     {

@@ -40,8 +40,21 @@ class FilmInfo extends BaseController
         return $type;
     }
     public function search(){
+        $page = $_POST['page'];
+        $num = $_POST['num'];
+        if($_POST['showTime']){
+            $result = $this->film
+                ->where([
+                    ['showTime', '=', $_POST['showTime']]
+                ])
+                ->limit($num*($page-1), $num)
+                ->select();
+        }else{
+            $result = $this->film
+                ->limit($num*($page-1), $num)
+                ->select();
+        }
         $type = $this->getType();
-        $result = $this->result;
         foreach ($result as $value1) {
             $catid = $value1->catid;
             foreach ($type as $value2) {

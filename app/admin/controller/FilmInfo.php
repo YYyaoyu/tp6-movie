@@ -42,7 +42,7 @@ class FilmInfo extends BaseController
     public function search(){
         $page = $_POST['page'];
         $num = $_POST['num'];
-        if($_POST['showTime']){
+        if(isset($_POST["showTime"])&&$_POST['showTime']){
             $result = $this->film
                 ->where([
                     ['showTime', '=', $_POST['showTime']]
@@ -54,6 +54,7 @@ class FilmInfo extends BaseController
                 ->limit($num*($page-1), $num)
                 ->select();
         }
+        
         $type = $this->getType();
         foreach ($result as $value1) {
             $catid = $value1->catid;

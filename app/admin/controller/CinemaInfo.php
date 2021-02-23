@@ -35,7 +35,7 @@ class CinemaInfo extends BaseController
     public function search(){
         $page = $_POST['page'];
         $num = $_POST['num'];    
-        if($_POST['provinceid']||$_POST['cityid']||$_POST['areaid']){
+        if(isset($_POST['provinceid'])&&$_POST['provinceid']||isset($_POST['cityid'])&&$_POST['cityid']||isset($_POST['areaid'])&&$_POST['areaid']){
             $result = $this->cinema
             ->where([
                 ['provinceid', '=', $_POST['provinceid']],

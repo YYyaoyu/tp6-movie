@@ -5,18 +5,21 @@ use app\BaseController;
 use app\common\model\Provinces;
 use app\common\model\Cities;
 use app\common\model\Areas;
+use app\common\model\Districts;
 
 class Region extends BaseController
 {
     private $provinces;
     private $cities;
     private $areas;
+    private $districts;
 
     public function initialize() 
     {
         $this->provinces = new Provinces();
         $this->cities = new Cities();
         $this->areas = new Areas();
+        $this->districts = new Districts();
     }
 
     public function index()
@@ -48,5 +51,12 @@ class Region extends BaseController
         $cityid = $_POST['cityid'];
         return $this->areas->where('cityid',$cityid)->select();
     }
+
+    public function getDistricts()
+    {
+        $areaid = $_POST['areaid'];
+        return $this->districts->where('areaid',$areaid)->select();
+    }
+
 
 }

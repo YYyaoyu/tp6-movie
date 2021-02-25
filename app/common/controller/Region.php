@@ -58,5 +58,27 @@ class Region extends BaseController
         return $this->districts->where('areaid',$areaid)->select();
     }
 
+    public function getTreeDistricts()
+    {
+        $areas = $this->getAreas();
+        $result = array();
+        foreach ($areas as $key => $value1) {
+            $arr = array();
+            $data= $this->districts->where('areaid',$value1->areaid)->select();
+            $item1 = array('text'=>'','children'=>[]);
+            foreach ($data as $value2) {
+                $item2 = array('text'=>$value2['district'],'id'=>$value2['districtid']);
+                array_push($arr,$item2);
+            }
+            $item1['children'] = $arr;
+            $item1['count'] = count($arr);
+            $item1['text'] = $value1['area'].'('.count($arr).')';
+            array_push($result,$item1);
+            
+        }
+        return json($result);
+       
+    }
+
 
 }

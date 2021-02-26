@@ -1,4 +1,5 @@
 -- 创建film(电影表)
+DROP TABLE IF EXISTS `film`;
 CREATE TABLE `film` (
   `id` INT(45) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,

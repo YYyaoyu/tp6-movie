@@ -67,7 +67,7 @@ class Region extends BaseController
             $data= $this->districts->where('areaid',$value1->areaid)->select();
             $item1 = array('text'=>'','children'=>[]);
             foreach ($data as $value2) {
-                $item2 = array('text'=>$value2['district'],'id'=>$value2['districtid']);
+                $item2 = array('text'=>$value2['district'],'id'=>$value2['districtid'],'value'=>$value2['districtid']);
                 array_push($arr,$item2);
             }
             $item1['children'] = $arr;
@@ -76,6 +76,8 @@ class Region extends BaseController
             array_push($result,$item1);
             
         }
+        array_unshift($result,array('text'=>'全部','children'=>array(array('text'=>'全部','id'=>'0','value'=>'0'))));
+
         return json($result);
        
     }

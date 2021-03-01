@@ -74,10 +74,8 @@ class Region extends BaseController
             $item1['count'] = count($arr);
             $item1['text'] = $value1['area'].'('.count($arr).')';
             array_push($result,$item1);
-            
         }
         array_unshift($result,array('text'=>'全部','children'=>array(array('text'=>'全部','id'=>'0','value'=>'0'))));
-
         return json($result);
        
     }

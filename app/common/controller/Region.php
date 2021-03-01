@@ -77,7 +77,6 @@ class Region extends BaseController
         }
         array_unshift($result,array('text'=>'全部','children'=>array(array('text'=>'全部','id'=>'0','value'=>'0'))));
         return json($result);
-       
     }
 
 

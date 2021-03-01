@@ -1,2 +1,5 @@
-*
-!.gitignore
+/.idea
+/.vscode
+/vendor
+*.log
+.env

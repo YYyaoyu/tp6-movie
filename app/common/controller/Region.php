@@ -79,5 +79,4 @@ class Region extends BaseController
         return json($result);
     }
 
-
 }
